@@ -1,5 +1,6 @@
 package dev.ulman.palindrome;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class Palindrome {
 		Palindrome palindrome = new Palindrome();
 		StringBuilder text = new StringBuilder();
 
-		try (Scanner in = new Scanner(new FileReader(new java.io.File(".").getCanonicalPath()
+		try (Scanner in = new Scanner(new FileReader(new File(".").getCanonicalPath()
 				+ "/src/main/resources/dev/ulman/palindrome/ZARTEM_W_METRAZ.txt"))) {
 			while (in.hasNext()) {
 				text.append(in.next());
