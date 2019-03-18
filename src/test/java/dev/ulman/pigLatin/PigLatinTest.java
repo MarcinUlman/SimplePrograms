@@ -1,4 +1,4 @@
-package deb.ulman.pigLatin;
+package dev.ulman.pigLatin;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -11,7 +11,7 @@ public class PigLatinTest {
 	PigLatin piglatin;
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		piglatin = new PigLatin();
 	}
 
