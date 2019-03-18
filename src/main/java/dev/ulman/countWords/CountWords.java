@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class CountWords {
 
 	public Map<String, Integer> countWords(String text, int minWoldLenth) {
-		text = text.replaceAll("[^a-z A-Z]", "").toLowerCase();
+		text = text.replaceAll("[^a-z A-Z ęóśłżźćńĘÓŚŁŻŹĆŃ]", "").toLowerCase();
 		Map<String, Integer> wordsCounter = new HashMap<String, Integer>();
 		String[] words = text.split(" ");
 
@@ -42,7 +42,7 @@ public class CountWords {
 		try (Scanner in = new Scanner(new FileReader(new File(".").getCanonicalPath()
 				+ "/src/main/resources/dev/ulman/countWords/AdamMickiewicz_PanTadeusz.txt"))) {
 			while (in.hasNext()) {
-				text.append(in.nextLine()).append(" ");
+				text.append(in.next()).append(" ");
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
