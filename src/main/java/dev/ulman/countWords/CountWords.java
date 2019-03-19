@@ -4,11 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.stream.Collectors;
+import java.util.TreeMap;
 
 public class CountWords {
 
@@ -32,8 +32,21 @@ public class CountWords {
 
 	public Map<String, Integer> sortMapByValues(Map<String, Integer> map) {
 
-		return map.entrySet().stream().sorted((Map.Entry.<String, Integer>comparingByValue().reversed()))
-				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+		Comparator<String> compar = new Comparator<String>() {
+
+			@Override
+			public int compare(String o1, String o2) {
+				if (map.get(o1) > map.get(o2)) {
+					return -1;
+				} else {
+					return 1;
+				}
+			}
+		};
+		TreeMap<String, Integer> sortedMap = new TreeMap<>(compar);
+		sortedMap.putAll(map);
+
+		return sortedMap;
 	}
 
 	public static void main(String[] args) {
